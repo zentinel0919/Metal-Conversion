@@ -1,0 +1,36 @@
+/* static/style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #416f9e;
+}
+
+h1 {
+    color: #343a40;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input, select, button {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #495057;
+}
+
+#canvas-container {
+    width: 400px;
+    height: 400px;
+    margin-top: 20px;
+}

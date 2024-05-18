@@ -1,0 +1,118 @@
+/* static/style.css */
+body {
+    font-family: goldman, sans-serif;
+    margin: 0;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #0e0d0d;
+    font-size: 120%;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    height: 100vh;
+}
+
+.section1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #172325;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 2%;
+}
+
+.section1 h1 {
+    font-size: 150%;
+    padding: 2%;
+}
+
+.section2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #283836;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.metal-info {
+    display: none;
+    border: 1px solid #364b48;
+    border-radius: 10px;
+    padding: 10%;
+    text-align: center;
+    color: #ffffff;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 170%;
+}
+
+form {
+    display: flex;
+    margin-bottom: 20px;
+    color: white;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: center;
+    width: 80%;
+}
+
+label {
+    margin-right: 10px;
+    margin-top: 2%;
+}
+
+input, select, button {
+    margin-right: 10px;
+    padding: 5px;
+    margin: 1%;
+    border: none;
+    background-color:#172325 ;
+    color: white;
+    border-bottom: 1px solid white;
+    font-size: larger;
+}
+
+
+button{
+    margin-top: 5%;
+    background-color: #ffffff;
+    color: #191927;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.247);
+}
+
+button:hover{
+    margin-top: 5%;
+    transform: translateY(-10%);
+    background-color: #ccc9c9;
+    border-radius: 10px;
+    transition: .5s;
+    box-shadow: 0px 5px 5px 10px rgba(0, 0, 0, 0.507);
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ffffff;
+}
+
+#canvas-container {
+    width: 400px;
+    height: 400px;
+    margin-top: 20px;
+}

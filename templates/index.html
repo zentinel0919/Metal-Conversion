@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>  
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style2.css">
+    <title>Precious Metals Price Converter</title>
+    <style>
+        .metal-info {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<main>
+<div class="section1">
+    <h1>Precious Metals Price Converter</h1>
+    <form id="price-form">
+        <label for="metal">Metal:</label>
+        <select id="metal" name="metal">
+            <option value="XAU">Gold</option>
+            <option value="XAG">Silver</option>
+            <option value="XPT">Platinum</option>
+            <option value="XPD">Palladium</option>
+        </select>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required>
+        <label for="currency">Currency:</label>
+        <select id="currency" name="currency">
+            <option value="USD">USD</option>
+            <option value="AUD">AUD</option>
+            <option value="GBP">GBP</option>
+            <option value="EUR">EUR</option>
+            <option value="CHF">CHF</option>
+            <option value="CAD">CAD</option>
+            <option value="JPY">JPY</option>
+            <option value="KRW">KRW</option>
+            <option value="INR">INR</option>
+            <option value="CNY">CNY</option>
+            <option value="ZAR">ZAR</option>
+            <option value="THB">THB</option>
+            <option value="SGD">SGD</option>
+            <option value="BTC">BTC</option>
+            <option value="HKD">HKD</option>
+            <option value="CZK">CZK</option>
+            <option value="RUB">RUB</option>
+            <option value="PLN">PLN</option>
+            <option value="MYR">MYR</option>
+            <option value="AED">AED</option>
+            <option value="KWD">KWD</option>
+            <option value="EGP">EGP</option>
+            <option value="OMR">OMR</option>
+            <option value="SAR">SAR</option>
+            <option value="MXN">MXN</option>
+            <option value="JOD">JOD</option>
+            <option value="XAG">XAG</option>
+        </select>
+        <button type="submit">Convert</button>
+    </form>
+    <div id="result"></div>
+</div>
+<div class="section2">
+    <h1>Metal Information</h1>
+    <div class="metal-info" id="XAU-info">
+        <img src="/static/gold.png" alt="Gold">
+        <p>Gold is a chemical element with the symbol Au and the atomic number 79. In its pure form, it is a bright, slightly orange-yellow, dense, soft, malleable, and ductile metal. Chemically, gold is a transition metal, a group 11 element, and one of the noble metals. It is one of the least reactive chemical elements, being the second-lowest in the reactivity series. It is solid under standard conditions.</p>
+    </div>
+    <div class="metal-info" id="XAG-info">
+        <img src="/static/silver.png" alt="Silver">
+        <p>Silver is a chemical element; it has symbol Ag and atomic number 47. A soft, white, lustrous transition metal, it exhibits the highest electrical conductivity, thermal conductivity, and reflectivity of any metal. The metal is found in the Earth's crust in the pure, free elemental form, as an alloy with gold and other metals, and in minerals such as argentite and chlorargyrite. Most silver is produced as a byproduct of copper, gold, lead, and zinc refining.</p>
+    </div>
+    <div class="metal-info" id="XPT-info">
+        <img src="/static/platinum.png" alt="Platinum">
+        <p>Platinum is a chemical element; it has symbol Pt and atomic number 78. It is a dense, malleable, ductile, highly unreactive, precious, silverish-white transition metal. Its name originates from Spanish platina, a diminutive of plata "silver".</p>
+    </div>
+    <div class="metal-info" id="XPD-info">
+        <img src="/static/palladium.png" alt="Palladium">
+        <p>Palladium is a chemical element; it has symbol Pd and atomic number 46. It is a rare and lustrous silvery-white metal discovered in 1802 by the English chemist William Hyde Wollaston. He named it after the asteroid Pallas, which was itself named after the epithet of the Greek goddess Athena, acquired by her when she slew Pallas. Palladium, platinum, rhodium, ruthenium, iridium and osmium form a group of elements referred to as the platinum group metals.</p>
+    </div>
+</div>
+</main>
+<script>
+    // Prevent form submission and handle conversion
+    document.getElementById('price-form').addEventListener('submit', async (e) => {
+        e.preventDefault(); // Prevent default form submission
+        const formData = new FormData(e.target);
+        const metal = formData.get('metal');
+        const amount = formData.get('amount');
+        const currency = formData.get('currency');
+        const response = await fetch(`/convert/${metal}/${amount}?currency=${currency}`);
+        const data = await response.json();
+        document.getElementById('result').innerText = `Converted Price: ${data.price} ${currency}`;
+    });
+
+    // Display relevant metal information when a metal is selected
+    const metalSelect = document.getElementById('metal');
+    metalSelect.addEventListener('change', (e) => {
+        const selectedMetal = e.target.value;
+        const metalInfo = document.getElementById(`${selectedMetal}-info`);
+        document.querySelectorAll('.metal-info').forEach(info => info.style.display = 'none');
+        metalInfo.style.display = 'block';
+    });
+
+    // Initialize the first metal information to be displayed
+    document.getElementById('XAU-info').style.display = 'block';
+</script>
+
+</body>
+</html>
